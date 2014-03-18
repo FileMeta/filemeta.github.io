@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+<title>{{ page.title }}</title>
+{% include head.html %}
+</head>
+
+<body>
+
+<div id="main">
+	{% include header.html %}
+	<div id="content" style="min-height: 400px;">
+		<div class="title">{{ page.title }}</div>
+		<table>
+			<tr>
+				<td style="font-weight:bold;">Date:</td>
+				<td>{{ page.date | date_to_long_string }}</td>
+			</tr>
+			<tr>
+				<td style="font-weight:bold;">Status:</td>
+				<td>{{ page.status }}</td>
+			</tr>
+			<tr>
+				<td style="font-weight:bold;">Document:</td>
+				<td><a href="{{ page.docurl }}">Click Here</a></td>
+			</tr>
+			<tr>
+				<td style="font-weight:bold;">Abstract:</td>
+				<td>{{ content }}</td>
+			</tr>
+		</table>
+	</div>
+	{% include footer.html %}
+</div>
+
+</body>
+
+</html>
