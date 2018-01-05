@@ -48,7 +48,7 @@ license: https://opensource.org/licenses/BSD-3-Clause
 ...
 */
 ```
-## Known CodeBits
+## <a name="directory"></a>Known CodeBits
 
 The following is a short (but growing) list of known CodeBits.
 
