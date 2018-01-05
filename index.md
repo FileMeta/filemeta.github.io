@@ -17,3 +17,7 @@ The FileMeta Project seeks to accelerate this change by:
 * and Sharing [source code](http://github.com/FileMeta) to metadata tools. 
 
 For a deeper introduction, see the [FileMeta Manifesto](/Manifesto.html)
+
+FileMeta Applications:
+
+* [CodeBits](/CodeBit.html): Lightweight code sharing based on FileMeta principles.

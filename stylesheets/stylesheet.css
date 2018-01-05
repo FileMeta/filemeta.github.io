@@ -62,6 +62,12 @@ a {
 a:hover {
   color: #c5000c;
 }
+a.plain {
+  color: black;
+}
+a:hover.plain {
+  color: black;
+}
 
 header {
   padding-top: 25px;
