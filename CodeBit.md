@@ -54,5 +54,6 @@ The following is a short (but growing) list of known CodeBits.
 
 * [ConsoleHelper](https://github.com/FileMeta/ConsoleHelper): (C#) A class for making console applications more friendly when invoked from a debugger or a shortcut.
 * [HtmlReader](https://github.com/FileMeta/HtmlReader): (C#) A compact and full-featured HTML parser for .NET that implements the XmlReader interface.
+* [IsomCoreMetadata](https://github.com/FileMeta/IsomCoreMetadata) (C#) A class for retrieving and updating core metata from files in .MP4, .MOV, .M4A, and other ISO Base Media Format files.
 * [MicroYaml](https://github.com/FileMeta/MicroYaml): (C#) A simple parser for the MicroYaml dialect of the YAML file format.
 * [WinShellPropertyStore](https://github.com/FileMeta/WinShellPropertyStore): (C#) .NET Wrapper classes for the Windows Property System.
