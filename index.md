@@ -11,9 +11,9 @@ The FileMeta philosophy – that identity belongs in the file – affects the de
 
 The FileMeta Project seeks to accelerate this change by:
 
-* [Reporting](/Research.html) on related work
-* [Documenting](/Metadata.html) metadata formats and file type identification
-* Proposing and sharing [best practices](/BestPractices.html)
+* [Reporting](https://blog.filemeta.org) on related work,
+* [Documenting](/Metadata.html) metadata elements and file type identification,
+* Proposing and sharing best practices,
 * and Sharing [source code](http://github.com/FileMeta) to metadata tools. 
 
 For a deeper introduction, see the [FileMeta Manifesto](/Manifesto.html)

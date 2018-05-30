@@ -8,14 +8,12 @@
 
 <body>
 
-<div id="container">
-	<div class="inner">
-		{% include header.html %}
-		<section id="main_content">
-			{{ content }}
-		</section>
-		{% include footer.html %}
-	</div>
+<div id="main">
+	{% include header.html %}
+	<article>
+		{{ content }}
+	</article>
+	{% include footer.html %}
 </div>
 
 </body>
