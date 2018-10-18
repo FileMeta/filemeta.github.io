@@ -8,13 +8,15 @@
 
 <body>
 
-<div id="main">
-	{% include header.html %}
-	<article>
-		{{ content }}
-	</article>
-	{% include footer.html %}
-</div>
+    <div id="frame">
+        {% include header.html %}
+        <main>
+            <article>
+                {{ content }}
+            </article>
+        </main>
+        {% include footer.html %}
+    </div>
 
 </body>
 

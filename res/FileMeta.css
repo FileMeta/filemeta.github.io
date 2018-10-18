@@ -70,6 +70,7 @@
 * {
     box-sizing: border-box;
 }
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -114,8 +115,11 @@ body {
 /* All other font sizes should be relative to the base (e.g. 1.5em or 150%) */
 
 /* Main frame for pages - should sit just inside body */
-#main {
+#frame {
     max-width: 55em;
+    /* Blogger
+    max-width: 65em;
+    */
     margin: 5px auto;
     padding: 5px;
 }
@@ -222,22 +226,28 @@ div.menu {
 
 /* ==== Footer ==== */
 footer {
+    text-align: center;
 }
-    footer::before {
-        /* Border rule */
-        content: "";
-        display: table;
-        background-image: var(--gradient_hr);
-        height: 2px;
-        width: 100%;
-        margin-top: 0.5em;
-        margin-bottom: 0.5em;
-    }
+footer::before {
+    /* Border rule */
+    content: "";
+    display: table;
+    background-image: var(--gradient_hr);
+    height: 2px;
+    width: 100%;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
 footer::after {
     /* Keep float items from overflowing the block */
     content: "";
     clear: both;
     display: table;
+}
+
+/* ==== Main Section - where articles appear */
+main {
+    /* Nothing here - inherits setup from the frame. */
 }
 
 /* ==== General text formatting ==== */
@@ -290,7 +300,7 @@ a {
 a:hover {
     background-color: var(--clr_link_hover_bg);
 }
-a:visited, a.linkvisited {
+a:visited, .linkvisited {
     color: var(--clr_link_visited);
 }
 
@@ -337,7 +347,6 @@ h3 {
     font-weight: bold;
     color: var(--clr_accent2);
     margin-top: 0.2em;
-    margin-top: 0.2em;
 }
 
 h4 {
@@ -345,7 +354,6 @@ h4 {
     font-weight: bold;
     font-style: italic;
     color: black;
-    margin-top: 0.2em;
     margin-top: 0.2em;
 }
 
@@ -355,7 +363,6 @@ h5 {
     text-decoration: underline;
     color: black;
     margin-top: 0.2em;
-    margin-top: 0.2em;
 }
 
 h6 {
@@ -363,7 +370,6 @@ h6 {
     font-weight: bold;
     text-decoration: none;
     color: black;
-    margin-top: 0.2em;
     margin-top: 0.2em;
 }
 
@@ -443,6 +449,6 @@ table.layout
 
 table.layout th, table.layout td
 {
-	border: 0px none white;
+	border: 0 none white;
 	padding: 0;	
 }
