@@ -4,14 +4,14 @@ title: CodeBits
 layout: default
 ---
 # CodeBits
-CodeBits are an application of [FileMeta Principles](/Manifesto.html) to accomplish lightweight code sharing. The unit of sharing is a single source code file called a CodeBit. Each CodeBit file begins with YAML metadata encapsulated in a comment so that it doesn't interfere with the function of the code itself.
+CodeBits are an application of [FileMeta Principles](/Manifesto.html) to accomplish lightweight code sharing. The unit of sharing is a single source code file called a CodeBit. Each CodeBit file begins with metadata encapsulated in a comment so that it doesn't interfere with the function of the code itself. The metadata follows the [SoftwareSourceCode](https://schema.org/SoftwareSourceCode) schema from [Schema.org](https://schema.org) and is encoded in [YAML](https://yaml.org/)
 
 The metadata includes a keyword indicating that the file is CodeBit, name,  URL to the master copy, and version number. Optional fields include description, copyright, license, and so forth.
 
 This page includes the following sections:
 
 * [FMCodeBit Application](#application): A description of the FMCodeBit utility application.
-* [CodeBit Specification](#spec): The (very simple) specification for  CodeBits
+* [CodeBit Specification](#spec): The (very simple) specification for CodeBits
 * [Sample Metadata Block](#sample): A sample CodeBit metadata block.
 * [Known CodeBits](#directory): A short but growing list of known CodeBits. 
 
@@ -53,7 +53,11 @@ license: https://opensource.org/licenses/BSD-3-Clause
 The following is a short (but growing) list of known CodeBits.
 
 * [ConsoleHelper](https://github.com/FileMeta/ConsoleHelper): (C#) A class for making console applications more friendly when invoked from a debugger or a shortcut.
+* [DateTag](https://github.com/FileMeta/DateTag): (C#) A class that represents date/time metadata including timezone and precision information often neglected by other date parsers and formatters.
+* [ExifToolWrapper](https://github.com/FileMeta/ExifToolWrapper): (C#) A wrapper class for Phil Harvey's excellent [ExifTool](https://www.sno.phy.queensu.ca/~phil/exiftool/).
 * [HtmlReader](https://github.com/FileMeta/HtmlReader): (C#) A compact and full-featured HTML parser for .NET that implements the XmlReader interface.
-* [IsomCoreMetadata](https://github.com/FileMeta/IsomCoreMetadata) (C#) A class for retrieving and updating core metata from files in .MP4, .MOV, .M4A, and other ISO Base Media Format files.
-* [MicroYaml](https://github.com/FileMeta/MicroYaml): (C#) A simple parser for the MicroYaml dialect of the YAML file format.
+* [IsomCoreMetadata](https://github.com/FileMeta/IsomCoreMetadata) (C#) A class for retrieving and updating core metadata from files in .MP4, .MOV, .M4A, and other ISO Base Media Format files.
+* [MetaTag](https://github.com/FileMeta) A class for embedding and extracting metadata tags in free-form text fields according to the proposed MetaTag specification.
+* [MicroYaml](https://github.com/FileMeta/MicroYaml): (C#) A simple parser and serializer for the MicroYaml dialect of the YAML file format.
+* [TimeZoneTag](https://github.com/FileMeta/TimeZoneTag): (C#) A class for parsing and formatting TimeZone metadata.
 * [WinShellPropertyStore](https://github.com/FileMeta/WinShellPropertyStore): (C#) .NET Wrapper classes for the Windows Property System.
