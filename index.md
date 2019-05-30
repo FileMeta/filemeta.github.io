@@ -21,3 +21,4 @@ For a deeper introduction, see the [FileMeta Manifesto](/Manifesto.html)
 FileMeta Applications:
 
 * [CodeBits](/CodeBit.html): Lightweight code sharing based on FileMeta principles.
+* [MetaTags](/MetaTags.html): A format for metadata embedded in text much like hashtags.
