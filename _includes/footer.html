@@ -5,13 +5,8 @@
         Unless stated otherwise, all content on <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">FileMeta.org</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
     </div>
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-50235635-1"></script>
     <script>
-window.dataLayer = window.dataLayer || [];
-function gtag() { dataLayer.push(arguments); }
-gtag('js', new Date());
-
-gtag('config', 'UA-50235635-1');
-    </script>
+        // Privacy-sensitive page view counter
+        fetch("https://pageviewcounter.dicax.org/rpv?url=" + encodeURIComponent(window.location.href));
+      </script>    
 </footer>
