@@ -12,13 +12,13 @@ The FileMeta philosophy – that identity belongs in the file – affects the de
 The FileMeta Project seeks to accelerate this change by:
 
 * [Reporting](https://blog.filemeta.org) on related work,
-* [Documenting](/Metadata.html) metadata elements and file type identification,
+* [Documenting](/Metadata) metadata elements and file type identification,
 * Proposing and sharing best practices,
 * and Sharing [source code](http://github.com/FileMeta) to metadata tools. 
 
-For a deeper introduction, see the [FileMeta Manifesto](/Manifesto.html)
+For a deeper introduction, see the [FileMeta Manifesto](/Manifesto)
 
 FileMeta Applications:
 
-* [CodeBit](/CodeBit.html): Lightweight code sharing based on FileMeta principles.
-* [MetaTag](/MetaTag.html): A format for metadata embedded in text much like hashtags.
+* [CodeBit](/CodeBit): Lightweight code sharing based on FileMeta principles.
+* [MetaTag](/MetaTag): A format for metadata embedded in text much like hashtags.
