@@ -140,14 +140,14 @@ Despite referencing [Schema.org](https://schema.org), which is an RDF schema, me
 
 Other requirements of RDF are that the subject of the metadata be indicated and the object type of the subject be indicated.
 
-For metatags, the **subject** is the document or text stream in which the metatags are embedded. The **type** is optional and may be specified using the "type" property. For example:
+For metatags, the **subject** is the document or text stream in which the metatags are embedded. The **type** is optional and may be specified using the "_type" property. For example:
 
 ```
-&type=Book
+&_type=Book
 &name="The Fellowship of the Ring"
 ```
 
-A type value without a namespace prefix references types inthe Schema.org context. A type value with a namespace prefix references types within the corresponding namespace.
+A `_type` value without a namespace prefix references types inthe Schema.org context. A `_type` value with a namespace prefix references types within the corresponding namespace.
 
 ## Design Goals and Discussion
 
