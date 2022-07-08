@@ -194,7 +194,7 @@ In this example, indentation is not meaningful to the metatag parser, it's for c
 &type=Movie
 &name="The Fellowship of the Ring"
 &isBasedOn={
-    &type=Book
+    &_type=Book
     &name="The Fellowship of the Ring"
     &author="J.R.R. Tolkien"
 }
