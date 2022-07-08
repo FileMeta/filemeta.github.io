@@ -10,7 +10,7 @@ date: 2019-05-29
 &date=2022-07-07 <br/>
 &license=https://creativecommons.org/licenses/by/4.0/ <br/>
 &description="A specification for embedding metadata in any text stream much as hashtags are used in social media." <br/>
-&url=http://www.filemeta.org/MetaTags
+&url=http://www.filemeta.org/MetaTag
 
 # MetaTags
 
@@ -20,7 +20,7 @@ The [hashtag](https://en.wikipedia.org/wiki/Hashtag) already fills this need for
 
 A metatag is like a hashtag in that it can be embedded wherever text is stored. However, a metatag has both a name and a value. Thus, metatags allow custom metadata properties to be stored in existing text or textual fields such as comments.
 
-An important use case is embedding metadata in source code. MetaTags can be placed in a comment at the beginning of a source code file. Some programming languages have a metadata syntax. For example, C# has attributes that can be applied to classes, methods, properties, etc. However, metatags represent metadata about the source code *file* rather than the code structure. Thus, they are the right way to represent authorship, copyright info, licensing, and related information. (See )
+An important use case is embedding metadata in source code. MetaTags can be placed in a comment at the beginning of a source code file. Some programming languages have a metadata syntax. For example, C# has attributes that can be applied to classes, methods, properties, etc. However, metatags represent metadata about the source code *file* rather than the code structure. Thus, they are the right way to represent authorship, copyright info, licensing, and related information. (See the [CodeBit Specification](/CodeBit).)
 
 ## Example Metatags
 
@@ -41,7 +41,7 @@ A metatag starts with an ampersand (&) - just as a hashtag starts with the hash 
 
 An **optional** namespace prefix immediately follows the amperstand. See the [Namespaces](#namespaces) section for details on the use of namepace references.
 
-Next comes the name which follows the same standard as a hashtag - it must be composed of letters, numbers, and the underscore character. Specifically Unicode categories: Ll, Lu, Lt, Lo, Lm, Mn, Nd, Pc. For regular expressions this matches the \w chacter class.
+Next comes the name which follows the same standard as a hashtag - it must be composed of letters, numbers, and the underscore character. Specifically Unicode categories: Ll, Lu, Lt, Lo, Lm, Mn, Nd, Pc. For regular expressions this matches the \w character class.
 
 Next is an equals sign.
 
@@ -53,9 +53,22 @@ In **quoted form**, the value is given by a quotation mark followed by zero or m
 
 All text that doesn't match the metatag pattern is the content of the text stream and is *not* metadata. Therefore, it should be ignored by a metatag extractor.
 
+## Embedded in Text
+All text other than metatags is the *content* of the subject. As with hashtags, metatags may appear anywhere and in any order.
+
+Here's an example of mixed text and metatags.
+
+```
+&headline="Water Discovered on mars"
+by &author="Doug Jones"
+&date="2022-07-15"
+
+One of the goals of the Mars rovers has been to find evidence of current and past water on the Mars surface. &keywords=Mars
+```
+
 ## Multivalued Properties
 
-Some properties, by their definition, may have multiple values. A [Schema.org](https://schema.org) example is [accessibilityFeature](https://schema.org/accessibilityFeature). In metatag format you simply repeat the name with each value.
+Some properties, by their definition, may have multiple values. A [Schema.org](https://schema.org) example is [accessibilityFeature](https://schema.org/accessibilityFeature). In metatag format you create a list by repeating multiple tags with the same name but different values.
 
 In this example, two values are specified for `accessibilityFeature`.
 ```
@@ -65,7 +78,7 @@ In this example, two values are specified for `accessibilityFeature`.
 
 Depending on the property, the order of the values may or may not be relevant. When order matters, it is the order in which the properties are listed.
 
-If multiple values are specified for a single-valued property then the *first* value should be used.
+If multiple values are specified for a single-valued property then the *first* value should be used. The others may be reported as errors.
 
 ## Extracting MetaTags using Regular Expressions
 
@@ -83,7 +96,7 @@ Humans can embed metatags wherever they like. When metatags are added programmat
 
 ## Schema
 
-When a namepace prefix is not present (which is the majority of the time) metadata elements belong to the [Schema.org](https://schema.org) namespace and should use the property definitions in that standard **Schema.org** has very broad coverage so it should support a majority of needed properties.
+When a namepace prefix is not present (which is the majority of the time) metadata elements belong to the [Schema.org](https://schema.org) namespace and should use the property definitions in that standard. **Schema.org** has very broad coverage so it should support a majority of needed properties.
 
 ## Data Types
 The data type of a value is interpreted by the applicaiton, guided by the schema, not by the source. For example:
@@ -93,7 +106,7 @@ The data type of a value is interpreted by the applicaiton, guided by the schema
 &name=4
 ```
 
-In [Schema.org](https://schema.org), [commentCount]() is defined as an integer so the value is interpreted as the integer 4. However, [name]() is defined as text so the value is interpreted as the string "4". When the type is not known or doesn't matter to the application then values should be handled as strings.
+In [Schema.org](https://schema.org), [commentCount](https://schema.org/commentCount) is defined as an integer so the value is interpreted as the integer 4. However, [name](https://schema.org/name) is defined as text so the value is interpreted as the string "4". When the type is not known or doesn't matter to the application then values should be handled as strings.
 
 ## Namespaces
 
@@ -119,11 +132,11 @@ The scope of a namespace declaration is the entire text string or stream where t
 
 ## RDF Type and Subject
 
-[Resource Description Framework (RDF)](https://en.wikipedia.org/wiki/Resource_Description_Framework) is W3C standard data model for metadata. There are multiple bindings, that is, there are multiple ways to represent RDF metadata including [RDFa](https://en.wikipedia.org/wiki/RDFa), [Microdata](https://en.wikipedia.org/wiki/Microdata_(HTML)), and [JSON-LD](https://en.wikipedia.org/wiki/JSON-LD).
+[Resource Description Framework (RDF)](https://en.wikipedia.org/wiki/Resource_Description_Framework) is W3C standard data model for metadata. There are multiple bindings for RDF. That is, there are multiple ways to represent RDF metadata including [RDFa](https://en.wikipedia.org/wiki/RDFa), [Microdata](https://en.wikipedia.org/wiki/Microdata_(HTML)), and [JSON-LD](https://en.wikipedia.org/wiki/JSON-LD).
 
 Despite referencing [Schema.org](https://schema.org), which is an RDF schema, metatags do not qualify as an RDF binding. That's because the metatag data model is flat and RDF schemas require hierarchical structure to the metadata. (See [Experimental Features](#experimental-features) for the prospect of adding hierarchy.)
 
-Other requirements of RDF are that the subject of the metadata be specified and the object type of the subject be indicated.
+Other requirements of RDF are that the subject of the metadata be indicated and the object type of the subject be indicated.
 
 For metatags, the **subject** is the document or text stream in which the metatags are embedded. The **type** is optional and may be specified using the "type" property. For example:
 
@@ -132,11 +145,11 @@ For metatags, the **subject** is the document or text stream in which the metata
 &name="The Fellowship of the Ring"
 ```
 
-A type value without a namespace prefix comes from the Schema.org context. Otherwise it comes from the context of the corresponding namespace.
+A type value without a namespace prefix references types inthe Schema.org context. A type value with a namespace prefix references types within the corresponding namespace.
 
 ## Design Goals and Discussion
 
-In creating the MetaTag Specification I (Brandt Redd) started with the following goals:
+In creating the MetaTag Specification I ([Brandt Redd](https://brandtredd.org)) started with the following goals:
 
 * The syntax should be sufficiently simple and intuitive that someone can compose valid metadata simply by viewing examples.
 * The metadata should be both human-readable and machine-readable.
@@ -145,13 +158,15 @@ In creating the MetaTag Specification I (Brandt Redd) started with the following
 
 I believe that this specification mostly achieves these goals but I had to make a few compromises.
 
-I debated whether to require quotes on all values. Allowing the unquoted format violates the "one obvious way" rule. Quoted format is needed to have values with embedded spaces whereas unquoted format is more succinct for simple values and is more reminiscent of the hashtags I was imitating. Ultimately, following the precedent of command-line syntax in supporting both formats.
+I debated whether to require quotes on all values. Allowing the unquoted format violates the "one obvious way" rule. Quoted format is requred since some values will have embedded spaces. Unquoted format is not a requirement. But it more succinct for simple values and is more reminiscent of the hashtags I was imitating. Ultimately, following the precedent of command-line syntax in supporting both formats.
 
-I considered whether to use doubled-quotes or a backslash escape for embedding quotes in a quoted value. Backslash escapes would also enable other escaped values such as \n for linefeed and even [Unicode](https://unicode.org) characters like \u1F643. But the goal of human-readability guided me toward keeping the quote escape simple and requiring all special characters to be literally embedded and not encoded.
+I considered whether to use doubled-quotes or a backslash escape for embedding quotation marks in a quoted value. Backslash escapes would also enable other escaped values such as \n for linefeed and even [Unicode](https://unicode.org) characters like \u1F643. But the goal of human-readability guided me toward keeping the quote escape simple and requiring all special characters to be literally embedded and not encoded.
 
 The specification would be complicated by a data type syntax. And default interpretation risks problems like [YAML has with Norway](https://www.bram.us/2022/01/11/yaml-the-norway-problem/). Therefore, string is the default and type interpretation is made by the application.
 
 Multivalued properties, or those with a list type, are handled by repeating the property once for each value. This is a simple solution that doesn't require any additional syntax.
+
+This specification has not yet achieved the goal of full compatibility with RDF. But I am experimenting with that. (See [Experimental Features](#experimental-features).)
 
 ## Usage of the Term, "MetaTag"
 
@@ -169,7 +184,7 @@ Adding an "object" capacity or hierarchical data structure would make metatags m
 
 Here is a proposed syntax:
 
-A property with an object value is introduced with a left brace ({) as the value (with no quotes). The property is closed by specifying the same property name with a right brace (}) as the value.
+A property with an object value is introduced with a left brace ({) as the value (with no quotes). The property is closed with a standalone right brace (}). Between the braces, only metatags and whitespace may appear.
 
 In this example, indentation is not meaningful to the metatag parser, it's for convenience to the human reader:
 
@@ -180,6 +195,5 @@ In this example, indentation is not meaningful to the metatag parser, it's for c
     &type=Book
     &name="The Fellowship of the Ring"
     &author="J.R.R. Tolkien"
-&isBasedOn=}
-
+}
 ```
