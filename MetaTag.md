@@ -63,7 +63,9 @@ Here's an example of mixed text and metatags.
 by &author="Doug Jones"
 &date="2022-07-15"
 
-One of the goals of the Mars rovers has been to find evidence of current and past water on the Mars surface. &keywords=Mars
+One of the goals of the Mars rovers has been
+to find evidence of current and past water
+on the Mars surface. &keywords=Mars
 ```
 
 ## Multivalued Properties
