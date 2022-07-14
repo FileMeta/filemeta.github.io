@@ -20,10 +20,10 @@ Coming soon will be a specification for simple CodeBit repositories, a console a
 
 ## <a name="spec"></a>CodeBit Specification
 
-Specificaiton metadata in MetaTag format
+Specification metadata in MetaTag format
 
 &name="CodeBit Specification" <br/>
-&version=1.1 <br/>
+&version=2.0 <br/>
 &author="Brandt Redd" <br/>
 &date=2022-07-14 <br/>
 &license=https://creativecommons.org/licenses/by/4.0/ <br/>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>{{ page.title | escape }}</title>
+{% include head.html %}
+</head>
+
+<body>
+    <div id="frame">
+        {% include header.html %}
+        <main>
+        <div id="content" style="min-height: 400px;">
+            <div class="title">{{ page.title | escape }}</div>
+            <div><b>{{ page.date | date_to_string }}</b> by {{ page.author }}</div>
+            {{ content }}
+        </div>
+        </main>
+        {% include footer.html %}
+    </div>
+</body>
+
+</html>

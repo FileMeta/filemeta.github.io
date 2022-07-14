@@ -1,4 +1,25 @@
-timezone: America/New_York
+timezone: America/Los_Angeles
 encoding: utf-8
 markdown: kramdown
+title: FileMeta
 domain: www.filemeta.org
+layout: default
+exclude:
+  - README.md
+  - docker-compose.yml
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: "default"
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+collections:
+  posts:
+    output: true
+    permalink: /posts/:path.html

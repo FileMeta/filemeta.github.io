@@ -452,3 +452,17 @@ table.layout th, table.layout td
 	border: 0 none white;
 	padding: 0;	
 }
+
+/* Specialized Styles */
+
+.blogTitle {
+    font-size: 2.0rem;
+    font-weight: normal;
+    color: var(--clr_accent2);
+    margin-top: 0.5em;
+    margin-bottom: 0em;
+}
+
+.blogDateline {
+    color: var(--clr_accent1);
+}
