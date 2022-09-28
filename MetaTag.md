@@ -89,7 +89,7 @@ Note that it is the definition of a metadata property that indicates whether it 
 The following regular expression will match any metatag in a text stream separating out the prefix, name, and value.
 
 ```
-&(\w+:)?(\w+)=([^\s"]+|(?:"[^"]*")+)
+&((\w+:)?\w+)=([^\s"]+|(?:"[^"]*")+)
 ```
 
 If the value is quoted, the quotes are included in the regular expression match. Therefore, the calling code must remove the beginning and ending quotes and convert double embedded quotes to single quotes.
@@ -100,7 +100,7 @@ Humans can embed metatags wherever they like. When metatags are added programmat
 
 ## Schema
 
-When a namepace prefix is not present (which is the majority of the time) metadata elements belong to the [Schema.org](https://schema.org) namespace and should use the property definitions in that standard. **Schema.org** has very broad coverage so it should support a majority of needed properties.
+When a namespace prefix is not present (which is the majority of the time) metadata elements belong to the [Schema.org](https://schema.org) namespace and should use the property definitions in that standard. **Schema.org** has very broad coverage so it should support a majority of needed properties.
 
 ## Data Types
 The data type of a value is interpreted by the applicaiton, guided by the schema, not by the source. For example:
