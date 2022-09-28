@@ -49,7 +49,7 @@ Next is the value which may be in plain or quoted form.
 
 In **plain form**, the value is a series of one or more non-whitespace and non-quote characters. The value is terminated by whitespace or by the end of the document.
 
-In **quoted form**, the value is given by a quotation mark followed by zero or more non-quote characters and terminated with another quotation mark. Newlines and other whitespace are permitted within the quoted text. A pair of quotation marks in the text, with nothing between, is interpreted as a single quotation mark in the value and does not terminate the value.
+In **quoted form**, the value is given by a full quotation mark (") followed by zero or more non-quote characters and terminated with another quotation mark. Newlines and other whitespace are permitted within the quoted text. A pair of quotation marks in the text, with nothing between, is interpreted as a single quotation mark in the value and does not terminate the value.
 
 All text that doesn't match the metatag pattern is the content of the text stream and is *not* metadata. Therefore, it should be ignored by a metatag extractor.
 
@@ -82,6 +82,8 @@ Depending on the property, the order of the values may or may not be relevant. W
 
 If multiple values are specified for a single-valued property then the *first* value should be used. The others may be reported as errors.
 
+Note that it is the definition of a metadata property that indicates whether it is single-valued or multi-valued.
+
 ## Extracting MetaTags using Regular Expressions
 
 The following regular expression will match any metatag in a text stream separating out the prefix, name, and value.
@@ -94,7 +96,7 @@ If the value is quoted, the quotes are included in the regular expression match.
 
 ## Programmatically Setting MetaTags
 
-Humans can embed metatags wherever they like. When metatags are added programmatically, the best practice is to first search for an existing tag with the matching name. If found, update the tag in-place. If not found, place the new tag at the end of the text string or stream.
+Humans can embed metatags wherever they like. When metatags are added programmatically, the best practice is to first search for an existing tag with the matching name. If found, update the tag in-place. If not found, place the new tag at the end of the text string or stream. For multi-valued tags keep all entries together.
 
 ## Schema
 
@@ -114,7 +116,7 @@ In [Schema.org](https://schema.org), [commentCount](https://schema.org/commentCo
 
 Namespaces are used to reference schemas other than [Schema.org](https://schema.org). You may need properties from another schema or you may need to define a custom schema for specialized properties.
 
-The namespace syntax is inspired by XML. A namespace prefix consists of one or more "word characters" followed by a colon. Word characters are the Unicode categories: Ll, Lu, Lt, Lo, Lm, Mn, Nd, Pc. For regular expressions this matches the \w chacter class.
+The namespace syntax is inspired by XML. A namespace prefix consists of one or more "word characters" followed by a colon. Word characters are the Unicode categories: Ll, Lu, Lt, Lo, Lm, Mn, Nd, Pc. For regular expressions this matches the \w character class.
 
 The "ns:" prefix is reserved for associating a namespace prefix with the corresponding URL. This is called a *namespace declaration*. For Example:
 
@@ -124,7 +126,7 @@ The "ns:" prefix is reserved for associating a namespace prefix with the corresp
 
 This declaration is not part of the metadata. Rather, it indicates that the `dc:` prefix will reference the [Dublin Core Metadata Initiative](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/) Terms schema.
 
-Elswhere in the text stream the prefix may be used. For example:
+Elsewhere in the text stream the prefix may be used. For example:
 
 ```
 &dc:description="A specification for embedding metadata in raw textual streams."
@@ -147,7 +149,7 @@ For metatags, the **subject** is the document or text stream in which the metata
 &name="The Fellowship of the Ring"
 ```
 
-A `_type` value without a namespace prefix references types inthe Schema.org context. A `_type` value with a namespace prefix references types within the corresponding namespace.
+A `_type` value without a namespace prefix references types defined by the Schema.org context. A `_type` value with a namespace prefix references types defined by the corresponding namespace.
 
 ## Design Goals and Discussion
 
@@ -160,7 +162,7 @@ In creating the MetaTag Specification I ([Brandt Redd](https://brandtredd.org)) 
 
 I believe that this specification mostly achieves these goals but I had to make a few compromises.
 
-I debated whether to require quotes on all values. Allowing the unquoted format violates the "one obvious way" rule. Quoted format is requred since some values will have embedded spaces. Unquoted format is not a requirement. But it more succinct for simple values and is more reminiscent of the hashtags I was imitating. Ultimately, following the precedent of command-line syntax in supporting both formats.
+I debated whether to require quotes on all values. Allowing the unquoted format violates the "one obvious way" rule. Quoted format is required since some values will have embedded spaces. Unquoted format is not a requirement. But it is more succinct for simple values and is more reminiscent of the hashtags that inspired metatags. Ultimately, it seemed reasonable to follow the precedent of command-line syntax in supporting both formats.
 
 I considered whether to use doubled-quotes or a backslash escape for embedding quotation marks in a quoted value. Backslash escapes would also enable other escaped values such as \n for linefeed and even [Unicode](https://unicode.org) characters like \u1F643. But the goal of human-readability guided me toward keeping the quote escape simple and requiring all special characters to be literally embedded and not encoded.
 
@@ -191,7 +193,7 @@ A property with an object value is introduced with a left brace ({) as the value
 In this example, indentation is not meaningful to the metatag parser, it's for convenience to the human reader:
 
 ```
-&type=Movie
+&_type=Movie
 &name="The Fellowship of the Ring"
 &isBasedOn={
     &_type=Book
