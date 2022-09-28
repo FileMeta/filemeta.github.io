@@ -21,7 +21,7 @@ Coming soon will be a specification for simple CodeBit repositories, a console a
 
 ## <a name="spec"></a>CodeBit Specification
 
-Specification metadata in MetaTag format
+Metadata for this specification in MetaTag format
 
 &name="CodeBit Specification" <br/>
 &version=2.1 <br/>
@@ -33,13 +33,13 @@ Specification metadata in MetaTag format
 
 In the following text, ALL CAPS key words should be interpreted per [RFC 2119](https://tools.ietf.org/html/rfc2119).
 
-CodeBits are source code files with a metadata block near the beginning of the file. The metadata is in [MetaTag](/MetaTage) format and uses metadata property definitions from the [SoftwareSourceCode type](http://schema.org/SoftwareSourceCode) of [Schema.org](http://schema.org). At a minimum, the metadata block MUST include the `url`, `version`, and `keywords` properties and "CodeBit" MUST appear in the keywords. RECOMMENDED properties include `author`, `name`, `description`, and `license`. Other metadata properties are optional and should be selected from [Schema.org](https://schema.org).
+CodeBits are source code files with a metadata block near the beginning of the file. The metadata are in [MetaTag](/MetaTag) format and uses metadata property definitions from the [SoftwareSourceCode type](http://schema.org/SoftwareSourceCode) of [Schema.org](http://schema.org). At a minimum, the metadata block MUST include the `url`, `version`, and `keywords` properties and "CodeBit" MUST appear in the keywords. RECOMMENDED properties include `author`, `name`, `description`, and `license`. Other metadata properties are optional and should be selected from [Schema.org](https://schema.org).
 
 The `url` property SHOULD be the URL of the most recent release of the CodeBit. That is, if a CodeBit is updated, the new version is placed at same URL where the prior version was located. Older versions may exist at other URLs. See the [Versioning](#versioning) section for details.
 
 The `version` value SHOULD use [semantic versioning](http://semver.org). 
 
-Typically the metadata block is enclosed by multiline comment delimiters appropriate to the programming language. Single-line comment delimiters may also be used.
+The metadata block SHOULD be enclosed by multiline comment delimiters appropriate to the programming language. Single-line comment delimiters MAY be used.
 
 ## <a name="sample"></a>Sample Metadata Block
 Here is a sample metadata block for a C# source code file.
@@ -65,7 +65,7 @@ The `url` attribute of a CodeBit SHOULD reference the most recent release, even 
 
 CodeBits are incorporated into other software applications *by value*, not *by reference*. That is, the whole CodeBit file is included with an application's other source files and stored in the application's code repository. Thus, if a CodeBit is updated, it takes deliberate action by users of a CodeBit to update their software to a more recent release.
 
-While CodeBits include a version number, they do not incorporate a way to discover older versions. A potential future enhancement would be a `previousVersion` property similar to the Schema.org [successorOf](https://schema.org/successorOf) property. This would allow CodeBit tools to trace a version chain to retrieve a specific release. Another option would be to use the APIs of a source code repository like GitHub to discover versions from prior commits.
+While CodeBits include a version number, this specification does not (yet) indicate a way to discover older versions. A potential future enhancement would be a `updateTo` property similar to the Schema.org [successorOf](https://schema.org/successorOf) property. This would allow CodeBit tools to trace a version chain to retrieve a specific release. Another option would be to use the APIs of a source code repository like GitHub to discover versions from prior commits.
 
 For the present, it remains a manual process to locate earlier versions of a CodeBit. This is not a serious issue. The critical version of a CodeBit is the version that is used on the current build of a consuming application. That should be included with the application's source code. Next most critical is the latest version and that is available at the `url` specified in the metadata.
 
