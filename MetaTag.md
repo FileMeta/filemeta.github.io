@@ -5,9 +5,9 @@ layout: default
 date: 2019-05-29
 ---
 &name="MetaTag Specification" <br/>
-&version=1.1 <br/>
+&version=1.2 <br/>
 &author="Brandt Redd" <br/>
-&date=2022-07-07 <br/>
+&datePublished=2022-10-17 <br/>
 &license=https://creativecommons.org/licenses/by/4.0/ <br/>
 &description="A specification for embedding metadata in any text stream much as hashtags are used in social media." <br/>
 &url=http://www.filemeta.org/MetaTag
@@ -28,7 +28,7 @@ An important use case is embedding metadata in source code. MetaTags can be plac
 &author=Brandt
 &subject="MetaTag Specification"
 &comment="The term ""MetaTag"" is defined in this document."
-&date=2018-12-17T21:22:05-06:00
+&datePublished=2018-12-17T21:22:05-06:00
 &license=CC-BY
 &references=https://en.wikipedia.org/wiki/Metadata
 ```
@@ -61,7 +61,7 @@ Here's an example of mixed text and metatags.
 ```
 &headline="Water Discovered on mars"
 by &author="Doug Jones"
-&date="2022-07-15"
+&datePublished="2022-07-15"
 
 One of the goals of the Mars rovers has been
 to find evidence of current and past water
@@ -103,7 +103,7 @@ Humans can embed metatags wherever they like. When metatags are added programmat
 When a namespace prefix is not present (which is the majority of the time) metadata elements belong to the [Schema.org](https://schema.org) namespace and should use the property definitions in that standard. **Schema.org** has very broad coverage so it should support a majority of needed properties.
 
 ## Data Types
-The data type of a value is interpreted by the applicaiton, guided by the schema, not by the source. For example:
+The data type of a value is interpreted by the application, guided by the schema, not by the source. For example:
 
 ```
 &commentCount=4

@@ -26,18 +26,15 @@ Metadata for this specification in MetaTag format
 &name="CodeBit Specification" <br/>
 &version=2.1 <br/>
 &author="Brandt Redd" <br/>
-&date=2022-07-14 <br/>
+&datePublished=2022-07-14 <br/>
 &license=https://creativecommons.org/licenses/by/4.0/ <br/>
 &description="A specification for reusable source code that is programming language independent." <br/>
 &url=http://www.filemeta.org/CodeBit <br/>
 
 In the following text, ALL CAPS key words should be interpreted per [RFC 2119](https://tools.ietf.org/html/rfc2119).
 
-CodeBits are source code files with a metadata block near the beginning of the file. The metadata are in [MetaTag](/MetaTag) format and uses metadata property definitions from the [SoftwareSourceCode type](http://schema.org/SoftwareSourceCode) of [Schema.org](http://schema.org). At a minimum, the metadata block MUST include the `url`, `version`, and `keywords` properties and "CodeBit" MUST appear in the keywords. RECOMMENDED properties include `author`, `name`, `description`, and `license`. Other metadata properties are optional and should be selected from [Schema.org](https://schema.org).
+CodeBits are source code files with a metadata block near the beginning of the file. The metadata are in [MetaTag](/MetaTag) format and uses metadata property definitions from the [SoftwareSourceCode type](http://schema.org/SoftwareSourceCode) of [Schema.org](http://schema.org). At a minimum, the metadata block MUST include the `name`, `url`, `version`, and `keywords` properties and "CodeBit" MUST appear in the keywords. RECOMMENDED properties include `datePublished`, `author`, `description`, and `license`. Other metadata properties are optional and should be selected from [Schema.org](https://schema.org).
 
-The `url` property SHOULD be the URL of the most recent release of the CodeBit. That is, if a CodeBit is updated, the new version is placed at same URL where the prior version was located. Older versions may exist at other URLs. See the [Versioning](#versioning) section for details.
-
-The `version` value SHOULD use [semantic versioning](http://semver.org). 
 
 The metadata block SHOULD be enclosed by multiline comment delimiters appropriate to the programming language. Single-line comment delimiters MAY be used.
 
@@ -46,22 +43,42 @@ Here is a sample metadata block for a C# source code file.
 
 ```cs
 /*
-&name=MySharedCode.cs
+&name=example.com/MySharedCode.cs
 &description="Shared code demonstration module"
 &url=https://github.com/FileMeta/AcmeIndustries/raw/main/MySharedCode.cs
-&author="Adam Smith"
-&version=1.4
+&version=1.4.0
 &keywords=CodeBit
-&dateModified=2017-05-24
+&datePublished=2017-05-24
+&author="Adam Smith"
 &copyrightHolder="ACME Industries"
 &copyrightYear=2017
 &license=https://opensource.org/licenses/BSD-3-Clause
 */
 ```
 
+## Properties
+Properties follow the definitions in [schema.org](https://schema.org). These are specific details on how they are interpreted for codebits.
+
+### name
+The name SHOULD be the registered domain name of the publisher followed by a slash, followed by the preferred filename of the codebit. There SHOULD be no spaces in the name.
+
+### url
+The `url` property SHOULD be the URL of the most recent release of the CodeBit. That is, if a CodeBit is updated, the new version is placed at same URL where the prior version was located. Older versions may exist at other URLs. See the [Versioning](#versioning) section for details.
+
+### version
+The `version` value SHOULD use [semantic versioning](semver.org). Per that standard, the simplest form includes three numbers separated by periods.
+
+### keywords
+A codebit is distinguished from other source code files by the presence of the `CodeBit` keyword. Per the [MetaTag specification]() a multi-valued property like `keywords` includes a separate tag for each keyword. So, if the keywords "CodeBit" and "Collection" are both to be included, the code would be `&keywords=CodeBit &keywords=Collection`.
+
+### datePublished
+All dates, including `datePublished` MUST use [RFC 3339](https://www.rfc-editor.org/rfc/rfc3339) format which is a profile of [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). `datePublished` SHOULD be just a date. For example, "1986-12-25".
+
 ## <a name="versioning"></a>A Note on Versioning
 
 The `url` attribute of a CodeBit SHOULD reference the most recent release, even if the CodeBit in which the metadata is located is not the most recent.
+
+When included, `datePublished` SHOULD be the date that this *version* was released for use.
 
 CodeBits are incorporated into other software applications *by value*, not *by reference*. That is, the whole CodeBit file is included with an application's other source files and stored in the application's code repository. Thus, if a CodeBit is updated, it takes deliberate action by users of a CodeBit to update their software to a more recent release.
 
