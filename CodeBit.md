@@ -26,7 +26,7 @@ Metadata for this specification in MetaTag format
 &name="CodeBit Specification" <br/>
 &version=2.1 <br/>
 &author="Brandt Redd" <br/>
-&datePublished=2022-07-14 <br/>
+&datePublished=2022-11-09 <br/>
 &license=https://creativecommons.org/licenses/by/4.0/ <br/>
 &description="A specification for reusable source code that is programming language independent." <br/>
 &url=http://www.filemeta.org/CodeBit <br/>
@@ -60,7 +60,7 @@ Here is a sample metadata block for a C# source code file.
 Properties follow the definitions in [schema.org](https://schema.org). These are specific details on how they are interpreted for codebits.
 
 ### name
-The name SHOULD be the registered domain name of the publisher followed by a slash, followed by the preferred filename of the codebit. There SHOULD be no spaces in the name.
+The name SHOULD be the registered domain name of the publisher followed by a slash, followed by the preferred filename of the codebit. The filename SHOULD include the extension associated withthe programming language (e.g. "example.com/peacemaker.js"). Additional slashes MAY separate components of the name (e.g. "example.com/category/dwim.js") There SHOULD be no spaces in the name and there SHOULD NOT be consecutive slashes.
 
 ### url
 The `url` property SHOULD be the URL of the most recent release of the CodeBit. That is, if a CodeBit is updated, the new version is placed at same URL where the prior version was located. Older versions may exist at other URLs. See the [Versioning](#versioning) section for details.
