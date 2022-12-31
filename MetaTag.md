@@ -5,7 +5,7 @@ layout: default
 date: 2019-05-29
 ---
 &name="MetaTag Specification" <br/>
-&version=1.2 <br/>
+&version=1.2-beta.2 <br/>
 &author="Brandt Redd" <br/>
 &datePublished=2022-10-17 <br/>
 &license=https://creativecommons.org/licenses/by/4.0/ <br/>
@@ -47,11 +47,20 @@ Next is an equals sign.
 
 Next is the value which may be in plain or quoted form.
 
-In **plain form**, the value is a series of one or more non-whitespace and non-quote characters. The value is terminated by whitespace or by the end of the document.
+In **plain form**, the value is a series of one or more non-whitespace and non-reserved characters. The value is terminated by a reserved character, whitespace, or by the end of the document. **Reserved characters** are the following: " (quote), ; (semicolon) [] (brackets) {} (braces) & (ampersand)
+
+Example: &name=Abundance
 
 In **quoted form**, the value is given by a full quotation mark (") followed by zero or more non-quote characters and terminated with another quotation mark. Newlines and other whitespace are permitted within the quoted text. A pair of quotation marks in the text, with nothing between, is interpreted as a single quotation mark in the value and does not terminate the value.
 
+Example: &name="Doug Jones"
+
 All text that doesn't match the metatag pattern is the content of the text stream and is *not* metadata. Therefore, it should be ignored by a metatag extractor.
+
+Multiple values for the same metadata element may be separated by semicolons in either *plain form* or *quoted form*.
+
+Example: &keywords=blue;favorite
+Example: &
 
 ## Embedded in Text
 All text other than metatags is the *content* of the subject. As with hashtags, metatags may appear anywhere and in any order.

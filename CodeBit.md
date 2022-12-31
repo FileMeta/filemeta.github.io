@@ -24,7 +24,7 @@ Coming soon will be a specification for simple CodeBit repositories, a console a
 Metadata for this specification in MetaTag format
 
 &name="CodeBit Specification" <br/>
-&version=2.1 <br/>
+&version=2.1-beta.2 <br/>
 &author="Brandt Redd" <br/>
 &datePublished=2022-11-09 <br/>
 &license=https://creativecommons.org/licenses/by/4.0/ <br/>
@@ -33,7 +33,7 @@ Metadata for this specification in MetaTag format
 
 In the following text, ALL CAPS key words should be interpreted per [RFC 2119](https://tools.ietf.org/html/rfc2119).
 
-CodeBits are source code files with a metadata block near the beginning of the file. The metadata are in [MetaTag](/MetaTag) format and uses metadata property definitions from the [SoftwareSourceCode type](http://schema.org/SoftwareSourceCode) of [Schema.org](http://schema.org). At a minimum, the metadata block MUST include the `name`, `url`, `version`, and `keywords` properties and "CodeBit" MUST appear in the keywords. RECOMMENDED properties include `datePublished`, `author`, `description`, and `license`. Other metadata properties are optional and should be selected from [Schema.org](https://schema.org).
+CodeBits are source code files with a metadata block near the beginning of the file. The metadata are in [MetaTag](/MetaTag) format and uses metadata property definitions from the [SoftwareSourceCode type](http://schema.org/SoftwareSourceCode) of [Schema.org](http://schema.org). At a minimum, the metadata block MUST include the `name`, `url`, `version`, and `keywords` properties and "CodeBit" MUST appear in the keywords. RECOMMENDED properties include `datePublished`, `author`, `description`, `license`, and `dependencies`. Other metadata properties are optional and should be selected from [Schema.org](https://schema.org).
 
 
 The metadata block SHOULD be enclosed by multiline comment delimiters appropriate to the programming language. Single-line comment delimiters MAY be used.
@@ -74,17 +74,36 @@ A codebit is distinguished from other source code files by the presence of the `
 ### datePublished
 All dates, including `datePublished` MUST use [RFC 3339](https://www.rfc-editor.org/rfc/rfc3339) format which is a profile of [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). `datePublished` SHOULD be just a date. For example, "1986-12-25".
 
+### dependencies
+Names and optional version numbers of one or more codebits on which this codebit depends. The version is appended to the name using URL query string format. For example, "example.com/peacemaker.js?version=2.1.0"
+
+Per the [MetaTag Specification](MetaTag) multiple dependencies may specified by using a semicolon-delimited list or by repeating the `dependencies` tag once per dependendency.
+
+Here are some examples:
+
+* dependencies=example.com/peacemaker.js?version=2.1.0;example.com/sorter.js?version=1.0.0
+* dependencies="example.com/peacemaker.js?version=2.1.0";"example.com/sorter.js?version=1.0.0"
+* dependencies=example.com/peacemaker.js<br/>
+dependencies=example.com?version=1.0.0
+
+Note that [dependencies](https://schema.org/dependencies) is defined by Schema.org but it is not defined for the [SoftwareSourceCode type](http://schema.org/SoftwareSourceCode). Nevertheless we use it for codebits.
+
 ## <a name="versioning"></a>A Note on Versioning
 
-The `url` attribute of a CodeBit SHOULD reference the most recent release, even if the CodeBit in which the metadata is located is not the most recent.
+The `url` attribute of a CodeBit SHOULD NOT change when a new version is posted. That is, a new codebit version is posted at the same URL as prior versions.
 
 When included, `datePublished` SHOULD be the date that this *version* was released for use.
 
 CodeBits are incorporated into other software applications *by value*, not *by reference*. That is, the whole CodeBit file is included with an application's other source files and stored in the application's code repository. Thus, if a CodeBit is updated, it takes deliberate action by users of a CodeBit to update their software to a more recent release.
 
-While CodeBits include a version number, this specification does not (yet) indicate a way to discover older versions. A potential future enhancement would be a `updateTo` property similar to the Schema.org [successorOf](https://schema.org/successorOf) property. This would allow CodeBit tools to trace a version chain to retrieve a specific release. Another option would be to use the APIs of a source code repository like GitHub to discover versions from prior commits.
+Prior versions of a CodeBit are located using the [CodeBit Directory](#codebit-directory).
 
-For the present, it remains a manual process to locate earlier versions of a CodeBit. This is not a serious issue. The critical version of a CodeBit is the version that is used on the current build of a consuming application. That should be included with the application's source code. Next most critical is the latest version and that is available at the `url` specified in the metadata.
+## CodeBit Directory
+
+*Work in Progress*
+Directories are used to locate codebits by name and to find different versions of a codebit. The directory is in JSON-LD format and follows the [Open Competency Framework Collaborative Directory Data Model](https://docs.google.com/document/d/1EMdHnYsiXJiAfRRBx85q0oclj04sVtkuRr0ynSIowcg/edit).
+
+A publisher of CodeBits creates a directory and publishes it with open access on the web. The URL of the directory MUST be provided in a DNS TXT record. If the directory is for `sample.com` then the TXT record should be defined on `_dir.sample.com`. The contents of the TXT record are "dir=" plus the URL of the directory. Thus, a directory located at "https://www.sample.com/codebits.json" would have the following in the TXT record: "dir=https://www.sample.com/codebits.json".
 
 ## <a name="directory"></a>Known CodeBits
 
