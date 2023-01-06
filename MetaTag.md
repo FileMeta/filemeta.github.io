@@ -47,7 +47,7 @@ Next is an equals sign.
 
 Next is the value which may be in plain or quoted form.
 
-In **plain form**, the value is a series of one or more non-whitespace and non-reserved characters. The value is terminated by a reserved character, whitespace, or by the end of the document. **Reserved characters** are the following: " (quote), ; (semicolon) [] (brackets) {} (braces) & (ampersand)
+In **plain form**, the value is a series of one or more non-whitespace and non-reserved characters. The value is terminated by whitespace, a reserved character, or by the end of the document. **Reserved characters** are the following: " (quote) ; (semicolon) [] (brackets) {} (braces) & (ampersand) , (comma)
 
 Example: &name=Abundance
 
@@ -56,11 +56,6 @@ In **quoted form**, the value is given by a full quotation mark (") followed by 
 Example: &name="Doug Jones"
 
 All text that doesn't match the metatag pattern is the content of the text stream and is *not* metadata. Therefore, it should be ignored by a metatag extractor.
-
-Multiple values for the same metadata element may be separated by semicolons in either *plain form* or *quoted form*.
-
-Example: &keywords=blue;favorite
-Example: &
 
 ## Embedded in Text
 All text other than metatags is the *content* of the subject. As with hashtags, metatags may appear anywhere and in any order.
@@ -79,7 +74,7 @@ on the Mars surface. &keywords=Mars
 
 ## Multivalued Properties
 
-Some properties, by their definition, may have multiple values. A [Schema.org](https://schema.org) example is [accessibilityFeature](https://schema.org/accessibilityFeature). In metatag format you create a list by repeating multiple tags with the same name but different values.
+Some properties, by their definition, may have multiple values. A [Schema.org](https://schema.org) example is [accessibilityFeature](https://schema.org/accessibilityFeature). In metatag format you create a list by using multiple tags with the same name but different values.
 
 In this example, two values are specified for `accessibilityFeature`.
 ```
@@ -91,14 +86,14 @@ Depending on the property, the order of the values may or may not be relevant. W
 
 If multiple values are specified for a single-valued property then the *first* value should be used. The others may be reported as errors.
 
-Note that it is the definition of a metadata property that indicates whether it is single-valued or multi-valued.
+Note that it is the definition of a metadata property that indicates whether it is single-valued or multi-valued. Thus, a general purpose metatag extractor does not have information about whether a property is single or multi-valued. The API for the extractor should be designed accordingly.
 
 ## Extracting MetaTags using Regular Expressions
 
 The following regular expression will match any metatag in a text stream separating out the prefix, name, and value.
 
 ```
-&((\w+:)?\w+)=([^\s"]+|(?:"[^"]*")+)
+&((\w+:)?\w+)=([^\s";\[\]\{\}&,]+|(?:"[^"]*")+)
 ```
 
 If the value is quoted, the quotes are included in the regular expression match. Therefore, the calling code must remove the beginning and ending quotes and convert double embedded quotes to single quotes.
@@ -162,7 +157,7 @@ A `_type` value without a namespace prefix references types defined by the Schem
 
 ## Design Goals and Discussion
 
-In creating the MetaTag Specification I ([Brandt Redd](https://brandtredd.org)) started with the following goals:
+In creating the MetaTag Specification I, ([Brandt Redd](https://brandtredd.org)), started with the following goals:
 
 * The syntax should be sufficiently simple and intuitive that someone can compose valid metadata simply by viewing examples.
 * The metadata should be both human-readable and machine-readable.
