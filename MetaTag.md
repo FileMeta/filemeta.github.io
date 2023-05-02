@@ -14,7 +14,7 @@ date: 2019-05-29
 
 # MetaTags
 
-There are times when it helpful to add arbitrary metadata to text when the medium doesn't make a specific provision for it. Perhaps the needed metadata field hasn't been defined on that medium or perhaps the medium doesn't support metadata at all.
+There are times when it is helpful to add arbitrary metadata to text when the medium doesn't make a specific provision for it. Perhaps the needed metadata field hasn't been defined on that medium or perhaps the medium doesn't support metadata at all.
 
 The [hashtag](https://en.wikipedia.org/wiki/Hashtag) already fills this need for keywords, but that's only one of many valuable metadata tags. For example, it may be appropriate to specify the source of some content, or the relevant date, or the copyright license in a form that can be interpreted and indexed by computer.
 
@@ -81,6 +81,8 @@ In this example, two values are specified for `accessibilityFeature`.
 &accessibilityFeature=largePrint/CSSEnabled
 &accessibilityFeature=displayTransformability
 ```
+
+For certain properties, multiple values may be separated by a delimiter. For example, the [keywords](https://schema.org/keywords), may have multiple values separated by commas. 
 
 Depending on the property, the order of the values may or may not be relevant. When order matters, it is the order in which the properties are listed.
 

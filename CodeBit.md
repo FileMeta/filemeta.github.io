@@ -24,9 +24,9 @@ Coming soon will be a specification for simple CodeBit repositories, a console a
 Metadata for this specification in MetaTag format
 
 &name="CodeBit Specification" <br/>
-&version=2.1-beta.2 <br/>
+&version=2.1-beta.3 <br/>
 &author="Brandt Redd" <br/>
-&datePublished=2022-11-09 <br/>
+&datePublished=2023-05-02 <br/>
 &license=https://creativecommons.org/licenses/by/4.0/ <br/>
 &description="A specification for reusable source code that is programming language independent." <br/>
 &url=http://www.filemeta.org/CodeBit <br/>
@@ -43,6 +43,7 @@ Here is a sample metadata block for a C# source code file.
 
 ```cs
 /*
+&_type=SoftwareSourceCode
 &name=example.com/MySharedCode.cs
 &description="Shared code demonstration module"
 &url=https://github.com/FileMeta/AcmeIndustries/raw/main/MySharedCode.cs
@@ -57,10 +58,13 @@ Here is a sample metadata block for a C# source code file.
 ```
 
 ## Properties
-Properties follow the definitions in [schema.org](https://schema.org). These are specific details on how they are interpreted for codebits.
+Properties follow the [DataType](https://schema.org/DataType) definitions in [schema.org](https://schema.org). These are specific details on how they are interpreted for codebits.
+
+### _type
+This is the Schema.org schema type. For a codebit it SHOULD be [SoftwareSourceCode](https://schema.org/SoftwareSourceCode).
 
 ### name
-The name SHOULD be the registered domain name of the publisher followed by a slash, followed by the preferred filename of the codebit. The filename SHOULD include the extension associated withthe programming language (e.g. "example.com/peacemaker.js"). Additional slashes MAY separate components of the name (e.g. "example.com/category/dwim.js") There SHOULD be no spaces in the name and there SHOULD NOT be consecutive slashes.
+The name SHOULD be the registered domain name of the publisher followed by a slash, followed by the preferred filename of the codebit. The filename SHOULD include the extension associated with the programming language (e.g. "example.com/peacemaker.js"). Additional slashes MAY separate components of the name (e.g. "example.com/category/dwim.js") There SHOULD be no spaces in the name and there SHOULD NOT be consecutive slashes.
 
 ### url
 The `url` property SHOULD be the URL of the most recent release of the CodeBit. That is, if a CodeBit is updated, the new version is placed at same URL where the prior version was located. Older versions may exist at other URLs. See the [Versioning](#versioning) section for details.
@@ -69,22 +73,22 @@ The `url` property SHOULD be the URL of the most recent release of the CodeBit. 
 The `version` value SHOULD use [semantic versioning](semver.org). Per that standard, the simplest form includes three numbers separated by periods.
 
 ### keywords
-A codebit is distinguished from other source code files by the presence of the `CodeBit` keyword. Per the [MetaTag specification]() a multi-valued property like `keywords` includes a separate tag for each keyword. So, if the keywords "CodeBit" and "Collection" are both to be included, the code would be `&keywords=CodeBit &keywords=Collection`.
+A codebit is distinguished from other source code files by the presence of the `CodeBit` keyword. Per the [Schema.org keywords specification](https://schema.org/keywords) multiple keywords may be separated by commas. So, if the keywords "CodeBit" and "Collection" are both to be included, the code would be `&keywords="CodeBit, Collection`.
 
 ### datePublished
 All dates, including `datePublished` MUST use [RFC 3339](https://www.rfc-editor.org/rfc/rfc3339) format which is a profile of [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). `datePublished` SHOULD be just a date. For example, "1986-12-25".
 
 ### dependencies
-Names and optional version numbers of one or more codebits on which this codebit depends. The version is appended to the name using URL query string format. For example, "example.com/peacemaker.js?version=2.1.0"
+Names and optional version numbers of one or more codebits on which this codebit depends. The version is appended to the name using URL query string format. For example, "example.com/peacemaker.js?version=2.1.0". Note that these are codebit names which consist of a domain name, a slash, and a codebit filename (or path). They are not URLs.
 
-Per the [MetaTag Specification](MetaTag) multiple dependencies may specified by using a semicolon-delimited list or by repeating the `dependencies` tag once per dependendency.
+Multiple dependencies SHOULD be specified by repeating the `dependencies` tag once per dependency.
 
 Here are some examples:
 
-* dependencies=example.com/peacemaker.js?version=2.1.0;example.com/sorter.js?version=1.0.0
-* dependencies="example.com/peacemaker.js?version=2.1.0";"example.com/sorter.js?version=1.0.0"
-* dependencies=example.com/peacemaker.js<br/>
-dependencies=example.com?version=1.0.0
+* &dependencies=example.com/peacemaker.js
+* &dependencies="example.com/peacemaker.js?version=2.1.0
+* &dependencies=example.com/peacemaker.js?version=2.1.0<br/>
+&dependencies=example.com/sorter.js"
 
 Note that [dependencies](https://schema.org/dependencies) is defined by Schema.org but it is not defined for the [SoftwareSourceCode type](http://schema.org/SoftwareSourceCode). Nevertheless we use it for codebits.
 
@@ -101,9 +105,50 @@ Prior versions of a CodeBit are located using the [CodeBit Directory](#codebit-d
 ## CodeBit Directory
 
 *Work in Progress*
-Directories are used to locate codebits by name and to find different versions of a codebit. The directory is in JSON-LD format and follows the [Open Competency Framework Collaborative Directory Data Model](https://docs.google.com/document/d/1EMdHnYsiXJiAfRRBx85q0oclj04sVtkuRr0ynSIowcg/edit).
+Directories are used to locate codebits by name and to find different versions of a codebit. The directory is in JSON-LD format and follows the [Schema.org ItemList Format](https://schema.org/ItemList).
 
-A publisher of CodeBits creates a directory and publishes it with open access on the web. The URL of the directory MUST be provided in a DNS TXT record. If the directory is for `sample.com` then the TXT record should be defined on `_dir.sample.com`. The contents of the TXT record are "dir=" plus the URL of the directory. Thus, a directory located at "https://www.sample.com/codebits.json" would have the following in the TXT record: "dir=https://www.sample.com/codebits.json".
+A publisher of codebits creates a directory and publishes it with open access on the web. The URL of the directory MUST be provided in a DNS TXT record. If the directory is for `sample.com` then the TXT record should be defined on `_dir.sample.com`. The contents of the TXT record are "dir=" plus the URL of the directory. Thus, a directory located at "https://www.sample.com/codebits.json" would have the following in the TXT record: "dir=https://www.sample.com/codebits.json".
+
+To see an operational example of a directory .txt record enter the following at a Windows or Linux command line:
+```
+nslookup -type=txt _dir.bredd.tech
+```
+
+Here is a sample directory file. For details about the structure, consult the [JSON-LD Standard](https://json-ld.org/) and the [Schema.org ItemList Type](https://schema.org/ItemList)
+
+```json
+{
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": [
+        {
+            "@type": "SoftwareSourceCode",
+            "name": "example.com/MySharedCode.cs",
+            "description": "Shared code demonstration module",
+            "url": "https://github.com/FileMeta/AcmeIndustries/raw/main/MySharedCode.cs",
+            "version": "1.4.0",
+            "keywords": "CodeBit",
+            "datePublished": "2017-05-24",
+            "author": "Adam Smith",
+            "copyrightHolder": "ACME Industries",
+            "copyrightYear": "2017",
+            "license": "https://opensource.org/licenses/BSD-3-Clause"
+        },
+        {
+            "@type": "SoftwareSourceCode",
+            "name": "example.com/peacemaker.js?version=2.1.0",
+            "description": "Peacemaker Module",
+            "url": "https://github.com/FileMeta/AcmeIndustries/raw/main/Peacemaker.js",
+            "version": "2.1.0",
+            "keywords": "CodeBit",
+            "datePublished": "2022-06-17",
+            "license": "http://unlicense.org"
+        }
+    ]
+}
+```
+
+A codebit tool SHOULD ignore entries in the `itemListElement` list that are not of `@type` "SoftwareSourceCode" or that do not have "CodeBit" among their `keywords`. While the directory format is specified to support codebits, they are useful for far more. Any [Schema.org type](https://schema.org/docs/full.html) can easily be listed and, with more careful study of [RDF](https://www.w3.org/RDF/) and [JSON-LD](https://json-ld.org/) standards, any type from any schema can be listed. A directory can even include listings of other directories thereby creating a distributed directory mesh.
 
 ## <a name="directory"></a>Known CodeBits
 
