@@ -6,7 +6,7 @@ CodeBit Metadata
 &description="CodeBit demo of WebRTC video."
 &author="Brandt Redd"
 &url=https://raw.githubusercontent.com/FileMeta/filemeta.github.io/main/samples/VideoFeedback.html
-&version=0.0.0-beta
+&version=1.0.0
 &keywords=CodeBit
 &dateModified=2023-05-17T15:36:00
 &license=https://opensource.org/license/unlicense/
@@ -18,15 +18,33 @@ About Codebits http://www.filemeta.org/CodeBit
 <html>
     <head>
         <title>Video Feedback</title>
+        <style>
+            header {
+                text-align: center;
+            }
+
+            .inlineHeading {
+                font-size: 2em;
+                font-weight: bold;
+            }
+
+            video {
+                display: block;
+                width: 80%;
+                height: 80%;
+                margin: 1em auto;
+                border: 1px black solid;
+            }
+        </style>
     </head>
     <body>
-        <p>
-            <span style="font-size: 2em; font-weight: bold;">Video Feedback</span> - a stupid web trick.
+        <header>
+            <span class="inlineHeading">Video Feedback</span> - a stupid web trick.<br/>
             <button onclick="capture()">Click to Capture</button>
-        </p>
+        </header>
 
         <div>
-            <video id="vid1" muted autoplay style="display: block; width: 80%; height: 80%; margin: 1em auto;"></video>
+            <video id="vid1" muted autoplay style=""></video>
             <script>
                 async function capture() {
                     let mediaStream = await navigator.mediaDevices.getDisplayMedia({
