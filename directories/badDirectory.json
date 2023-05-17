@@ -1,0 +1,60 @@
+{
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": [
+        {
+            "@type": "SoftwareSourceCode",
+            "name": "sample.FileMeta.org/VideoFeedback.html",
+            "description": "CodeBit demo of WebRTC video",
+            "url": "https://raw.githubusercontent.com/FileMeta/filemeta.github.io/main/samples/VideoFeedback.html",
+            "version": "invalid",
+            "keywords": "CodeBit",
+            "author": "Brandt Redd",
+            "license": "https://opensource.org/license/unlicense/"
+        },
+        {
+            "@type": "ImageObject",
+            "description": "Bollard Icon",
+            "keywords": ["bollard", "icon", "graphic"],
+            "comment": "Included in this directory simply as an example of something other than source code.",
+            "url": "https://brandtredd.org/res/Bollard.png",
+            "subitem": {
+                "comment": "Just here for testing.",
+                "integer": 123,
+                "boolean": true
+            },
+            "integer": 123,
+            "boolean": true
+        },
+        {
+            "@type": "SoftwareSourceCode",
+            "name": "sample.FileMeta.org/VideoFeedback.html",
+            "description": "CodeBit demo of WebRTC video",
+            "url": "https://raw.githubusercontent.com/FileMeta/filemeta.github.io/70d5711399bbcc408fc873f22064b6583721eedd/samples/VideoFeedback.html",
+            "version": "0.0.0-alpha",
+            "keywords": "CodeBit",
+            "datePublished": "2023-05-17T15:28:00",
+            "author": "Brandt Redd",
+            "license": "https://opensource.org/license/unlicense/"
+        },
+        {
+            "@type": "SoftwareSourceCode",
+            "name": "sample.FileMeta.org/VideoFeedback.html",
+            "description": "CodeBit demo of WebRTC video",
+            "url": "https://github.com/FileMeta/filemeta.github.io/raw/6a43059253160650701e78b07087fea3ecacfd81/samples/VideoFeedback.html",
+            "version": "0.0.0-beta",
+            "keywords": "CodeBit",
+            "datePublished": "2023-05-17T15:36:00",
+            "author": "Brandt Redd",
+            "license": "https://opensource.org/license/unlicense/",
+            "comment": "Entertaining WebRTC demo. But mostly here as a sample for CodeBit infrastructure testing."
+        },
+        {
+            "@type": "SoftwareSourceCode",
+            "name": "FileMeta.org/GitHubPages-docker-compose.yml",
+            "description": "A docker-compose file that supports local testing of a GitHub pages site.",
+            "url": "https://raw.githubusercontent.com/bredd/brandtredd.github.io/master/docker-compose.yml",
+            "comment": "Example of source a source code entry that's not a codebit."
+        }
+    ]
+}
