@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Video Feedback</title>
+    </head>
+    <body>
+        <p>
+            <span>Video Feedback</span> - a stupid web trick.
+            <button onclick="capture()">Click to Capture</button>
+        </p>
+
+        <div>
+            <video id="vid1" muted autoplay style="width: 15em; height: 15em;"></video>
+            <script>
+                async function capture() {
+                    let mediaStream = await navigator.mediaDevices.getDisplayMedia({
+                        video: {
+                            cursor: "always"
+                        },
+                        audio: false
+                    });
+                    document.getElementById("vid1").srcObject = mediaStream;
+                }
+            </script>
+        </div>
+    </body>
+</html>
