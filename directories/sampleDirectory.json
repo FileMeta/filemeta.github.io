@@ -5,7 +5,7 @@
         {
             "@type": "SoftwareSourceCode",
             "name": "sample.FileMeta.org/VideoFeedback.html",
-            "description": "CodeBit demo of WebRTC video",
+            "description": "CodeBit demo of WebRTC video.",
             "url": "https://raw.githubusercontent.com/FileMeta/filemeta.github.io/main/samples/VideoFeedback.html",
             "version": "1.0.0",
             "keywords": "CodeBit",
@@ -30,7 +30,7 @@
         {
             "@type": "SoftwareSourceCode",
             "name": "sample.FileMeta.org/VideoFeedback.html",
-            "description": "CodeBit demo of WebRTC video",
+            "description": "CodeBit demo of WebRTC video.",
             "url": "https://raw.githubusercontent.com/FileMeta/filemeta.github.io/70d5711399bbcc408fc873f22064b6583721eedd/samples/VideoFeedback.html",
             "version": "0.0.0-alpha",
             "keywords": "CodeBit",
@@ -41,7 +41,7 @@
         {
             "@type": "SoftwareSourceCode",
             "name": "sample.FileMeta.org/VideoFeedback.html",
-            "description": "CodeBit demo of WebRTC video",
+            "description": "CodeBit demo of WebRTC video.",
             "url": "https://github.com/FileMeta/filemeta.github.io/raw/6a43059253160650701e78b07087fea3ecacfd81/samples/VideoFeedback.html",
             "version": "0.0.0-beta",
             "keywords": "CodeBit",
