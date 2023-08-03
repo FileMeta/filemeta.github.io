@@ -33,7 +33,7 @@
             "description": "CodeBit demo of WebRTC video.",
             "url": "https://raw.githubusercontent.com/FileMeta/filemeta.github.io/70d5711399bbcc408fc873f22064b6583721eedd/samples/VideoFeedback.html",
             "version": "0.0.0-alpha",
-            "keywords": "CodeBit",
+            "keywords": ["CodeBit", "Alpha"],
             "datePublished": "2023-05-17T15:28:00",
             "author": "Brandt Redd",
             "license": "https://opensource.org/license/unlicense/"
