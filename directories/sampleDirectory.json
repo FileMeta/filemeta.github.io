@@ -11,7 +11,8 @@
             "keywords": "CodeBit",
             "datePublished": "2023-05-17T15:36:00",
             "author": "Brandt Redd",
-            "license": "https://opensource.org/license/unlicense/"
+            "license": "https://opensource.org/license/unlicense/",
+            "hash": "SHA256:EC70B9159F6E928C6B4EC0ACE81FF27688F6D1B584EEF37B43AACD5D6C1FE1D4"
         },
         {
             "@type": "ImageObject",
